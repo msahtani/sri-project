@@ -109,38 +109,72 @@ public class IndexationServiceImp implements IndexationService{
 
     @Override
     public Set<PDFDocument> searchDocsByElements(String level, String branch, String semestre, String module, String request) throws IOException {
-        List<String> terms = process.processText(request) ;
-        Set<PDFDocument> result = new LinkedHashSet<>() ;
-        System.out.println("empty");
-        for(int i = 0 ; i<terms.size() ; i++){
-            System.out.println(terms.get(i));
-            Indexation index = findIndexationByTerm(terms.get(i)) ;
-            for(int j= 0 ; j<index.getDocuments().size() ; j++){
-                index.getDocuments().get(j) ;
-                PDFDocument pdf=documentServiceImp.getDocByName(index.getDocuments().get(j)) ;
-                if(pdf.getLevel().equals(level) && pdf.getBranch().equals(branch) && pdf.getSemestre().equals(semestre) && pdf.getModule().equals(module)){
-                    result.add(pdf) ;
+        List<String> terms = process.processText(request);
+        Map<PDFDocument, Integer> documentOccurrences = new HashMap<>();
+
+        for (int i = 0; i < terms.size(); i++) {
+            String term = terms.get(i);
+            Indexation index = findIndexationByTerm(term);
+            if (index == null) {
+                continue;
+            }
+            for (int j = 0; j < index.getDocuments().size(); j++) {
+                String documentName = index.getDocuments().get(j);
+                PDFDocument pdf = documentServiceImp.getDocByName(documentName);
+
+                if (pdf.getLevel().equals(level) && pdf.getBranch().equals(branch)
+                        && pdf.getSemestre().equals(semestre) && pdf.getModule().equals(module)) {
+                    // Increment the occurrence count for the document
+                    documentOccurrences.put(pdf, documentOccurrences.getOrDefault(pdf, 0) + 1);
                 }
             }
         }
-        return result ;
+
+        // Sort documents by occurrence count in descending order
+        System.out.println(documentOccurrences);
+        List<PDFDocument> sortedDocuments = new ArrayList<>(documentOccurrences.keySet());
+
+
+        sortedDocuments.sort(Comparator.comparingInt(documentOccurrences::get).reversed());
+
+        System.out.println(sortedDocuments);
+
+
+        Set<PDFDocument> result = new LinkedHashSet<>(sortedDocuments);
+
+        return result;
+
     }
 
     @Override
     public Set<PDFDocument> searchDocsByTerms(String request) throws IOException {
-        List<String> terms = process.processText(request) ;
-        System.out.println(terms);
-        Set<PDFDocument> result = new LinkedHashSet<>() ;
-        for(int i = 0 ; i<terms.size() ; i++){
-            System.out.println(terms.get(i));
+        List<String> terms = process.processText(request);
+        Map<PDFDocument, Integer> documentOccurrences = new HashMap<>();
 
-            Indexation index = findIndexationByTerm(terms.get(i)) ;
-            for(int j= 0 ; j<index.getDocuments().size() ; j++) {
+        for (String term : terms) {
+            System.out.println(term);
+            Indexation index = findIndexationByTerm(term);
+            if(index==null){
+                continue;
+            }
 
-                PDFDocument pdf = documentServiceImp.getDocByName(index.getDocuments().get(j));
-                result.add(pdf);
+            for (String documentName : index.getDocuments()) {
+                PDFDocument pdf = documentServiceImp.getDocByName(documentName);
+
+                documentOccurrences.put(pdf, documentOccurrences.getOrDefault(pdf, 0) + 1);
             }
         }
+        System.out.println(documentOccurrences);
+        List<PDFDocument> sortedDocuments = new ArrayList<>(documentOccurrences.keySet());
+
+
+        sortedDocuments.sort(Comparator.comparingInt(documentOccurrences::get).reversed());
+
+        System.out.println(sortedDocuments);
+
+
+        Set<PDFDocument> result = new LinkedHashSet<>(sortedDocuments);
+
         return result;
     }
 }

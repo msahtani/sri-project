@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import  org.springframework.data.mongodb.core.mapping.Document ;
 
+import java.util.Objects;
 
 
 @Document(collection = "pdfDocuments")
@@ -90,4 +91,18 @@ public class PDFDocument {
     public void setBranch(String branch) {
         this.branch = branch;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PDFDocument that = (PDFDocument) obj;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
 }
