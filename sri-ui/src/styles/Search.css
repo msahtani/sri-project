@@ -1,0 +1,126 @@
+.styleSearch {
+    border-radius: 10px;
+    border: 2px solid #8080C8;
+    width:60%;
+    height:40px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-bottom: 20px;
+}
+
+.iconSearch{
+   color:#8080C8;
+   height:60px;
+   margin-left:10px;
+   margin-right:5px;
+}
+
+.inputSearch{
+    width:100%; 
+    border: none; 
+}
+
+.inputSearch:focus {
+    outline: none;
+  }
+
+.iconCancel{
+    color:#8080C8;
+    height:40px;
+    margin-right:10px;
+ }
+
+ .selectContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15%;
+  }
+  
+  .styleSelect {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right:2%;
+    width:180px;
+  }
+  
+  .styleSelect:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .styleSelect span {
+    margin-right: 10px;
+  }
+  
+  .SousSelectContainer {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right:2%;
+  }
+
+  .st {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .st span {
+    display: block; 
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 5px; 
+  }
+  
+  .st span:hover {
+    background-color: #f0f0f0;
+  }
+
+  .container{
+    margin-left: 18%;
+  }
+
+  .styleButon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #8080C8;
+    border-radius: 5px;
+    width:180px;
+    background-color: #8080C8;
+    font-weight: bold;
+    color: white;
+    margin-right: 2%;
+  }
+
+  .textStyle {
+    font-weight: bold;
+    color: #8080C8;
+  }
+
+  .elemStyle {
+    border : 1px solid #D9D9D9;
+    background-color: #D9D9D9;
+    font-weight: bold;
+    border-radius: 25px;
+    font-size: 15px;
+    padding: 20px;
+    margin-top: 6px;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  .style{
+    margin-top: 100px;
+  }
+

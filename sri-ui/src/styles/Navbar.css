@@ -1,0 +1,48 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #8080C8; 
+    color: white;
+    height: 60px;
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .circle-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 10px;
+    color: white;
+    background-color: white;
+    display: flex;
+    align-items: center;
+  }
+  
+
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size:16px;
+  }
+
+  .ImgEnsa {
+    height: 50px;
+    margin: 5px;
+  }
+
+  .icon{
+    height: 20px;
+  }

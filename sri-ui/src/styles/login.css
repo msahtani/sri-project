@@ -1,0 +1,129 @@
+
+    .StyleContainer {
+        margin: 0;
+        padding: 0;
+        background-color: #F6E6FF;
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+
+      .containerLogin{
+        background-color: #8080C8; 
+        border-radius: 10px;
+        padding:40px;
+        text-align: center;
+      }
+    
+                                                 
+      .container h2 {
+        margin-bottom: 20px;
+      }
+    
+      .inputStyle{
+        border: 1px solid #F6E6FF;
+        border-radius: 8px;
+        background-color: white;
+        width: 450px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        padding:5px;
+        margin-top: 10px;
+      }
+    
+    
+    
+      .inputStyle input{
+        border: none;
+        font-size: 15px;
+        width: 90%;
+        outline: none;
+        color: #F6E6FF;
+      }
+    
+      .icon{
+        margin-top: 10px ;
+        size:22px;
+        color: #8080C8;
+        margin-right:5px;
+      }
+    
+      .iconPass{
+        margin-left:9px;
+        margin-top: 10px ;
+        size:22px;
+        color: #8080C8;
+        margin-right:5px;
+      }
+    
+      .buttonStyle {
+        border: 1px solid #F6E6FF;
+        background-color: #F6E6FF;
+        border-radius: 8px;
+        color : #8080C8;
+        font-weight: bold;
+        font-size: 15px;
+        padding-top:15px;
+        padding-bottom:15px;
+        margin-top: 12px;
+        width:460px;
+      }
+    
+      .buttonRetour{
+        color: #1E263A;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    
+      .buttonRetour text{
+        font-weight: bold;
+        font-size: 14px;
+      }
+    
+    
+      .containerLogin text{
+        font-size:10px;
+      }
+    
+      .iconLogin {
+        width: 100px;
+        height:100px;
+      }
+    
+      .title{
+        font-weight: bold;
+        font-size: 18px;
+      }
+    
+      .Stitle{
+        font-size: 15px;
+      }
+    
+      .linkStyle{
+        margin-top: 8px;
+        text-decoration: none;
+        color: #1E263A;
+      }
+    
+      .linkStyle text {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    
+      .linkStyle:hover {
+        color: gray;
+      }
+    
+      .errorStyle{
+        font-weight: bold;
+        font-size: 11px;
+        color: rgb(249, 27, 27);
+      }
+    
+      
+    
+    
+    
