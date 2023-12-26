@@ -1,4 +1,5 @@
 package ma.ensa.sriapi.service;
+import ma.ensa.sriapi.model.Role;
 import ma.ensa.sriapi.repository.StudentsRepository;
 import ma.ensa.sriapi.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,18 +27,16 @@ public class StudentServiceImp implements StudentService{
         return student;
     }
     @Override
-    public String authenticate(Student student) {
-        Student student1 = studentsRepository.findByEmail(student.getEmail());
-        if(student1!=null){
-            if(student1.getPassword().equals(student.getPassword())){
-                return "success";
-            }
-            else{
-                return "wrong password";
-            }
+    public String authenticate(String email, String password) {
+        Student student = studentsRepository.findByEmail(email);
+        if (student == null) {
+            return "incorrect combination email/password";
         }
-        else{
-            return "student not found";
+
+        if (student.getPassword().equals(password)) {
+            return "STUDENT";
+        } else {
+            return "incorrect combination email/password";
         }
     }
 

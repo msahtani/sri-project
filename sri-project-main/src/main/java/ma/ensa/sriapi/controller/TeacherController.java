@@ -24,9 +24,6 @@ public class TeacherController {
     public Teacher addTeacher(@RequestBody Teacher teacher){
         return teacherServiceImp.addTeacher(teacher);
     }
-    @PostMapping("/login")
-    public String authenticate(@RequestBody Teacher teacher){
-        return teacherServiceImp.authenticate(teacher);
-    }
+
 
 }

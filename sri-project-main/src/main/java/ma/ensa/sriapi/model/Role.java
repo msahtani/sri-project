@@ -2,5 +2,9 @@ package ma.ensa.sriapi.model;
 
 public enum Role {
     TEACHER,
-    STUDENT
+    STUDENT;
+
+    public String ToString() {
+        return null;
+    }
 }

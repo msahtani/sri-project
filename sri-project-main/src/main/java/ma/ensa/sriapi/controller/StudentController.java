@@ -39,8 +39,4 @@ public class StudentController {
     public Student addStudent(@RequestBody Student student){
         return studentServiceImp.addStudent(student) ;
     }
-    @PostMapping("/login")
-    public String authenticate(@RequestBody Student student){
-        return studentServiceImp.authenticate(student);
-    }
 }

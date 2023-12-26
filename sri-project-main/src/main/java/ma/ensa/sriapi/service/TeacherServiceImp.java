@@ -27,14 +27,18 @@ public class TeacherServiceImp implements TeacherService {
    public List<Teacher> getTeachers() {
         return teacherRepository.findAll();
     }
-    public String authenticate(Teacher teacher) {
-        Teacher teacher1 = teacherRepository.findByEmail(teacher.getEmail());
-        if(teacher1 == null){
-            return "Teacher not found";
+    @Override
+    public String authenticate(String email, String password) {
+        Teacher teacher = teacherRepository.findByEmail(email);
+        if (teacher == null) {
+            return "incorrect combination email/password";
         }
-        if(teacher1.getPassword().equals(teacher.getPassword())){
-            return "Teacher authenticated";
+
+        if (teacher.getPassword().equals(password)) {
+            return "TEACHER";
+        } else {
+            return "incorrect combination email/password";
         }
-        return "Wrong password";
     }
+
 }
