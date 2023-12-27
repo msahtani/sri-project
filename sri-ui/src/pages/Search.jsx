@@ -15,13 +15,9 @@ function Search() {
   const [showSem , setShowSem] = useState("semestre");
   const [text , setText] = useState("");
   const [resultF , setResultF] = useState([]);
+  const [showMsg , setShowMsg] = useState("")
 
-  const files = [
-    { name: 'PDF.pdf', type: 'pdf', content: 'Contenu du PDF' },
-    { name: 'Word.docx', type: 'doc', content: 'Contenu du Word' },
-    { name: 'PowerPoint.pptx', type: 'ppt', content: 'Contenu du PowerPoint' },
-  ];
-
+ 
   const handlSelect = (select) => {
     setShowN(false);
     setShowF(false);
@@ -164,6 +160,7 @@ function Search() {
         Rechercher
       </button>
       <label className='textStyle' onClick={handleRein}>Rénitialiser</label>
+      
       </div>
       <div className='style'>
         {resultF.map((file, index) => (

@@ -27,6 +27,7 @@ function HomeProf() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [showMsg , setShowMsg] = useState("")
   
 
   const [pdfData , setPdfData] = useState({
@@ -90,6 +91,7 @@ formData.append('pdfDocument', pdfDocument)
         
         if (response.status === 200) {
           console.log('Fichier ajouté avec succès');
+          setShowMsg(true)
         }
       } catch (error) {
         console.error('Erreur lors de l\'ajout du fichier :', error.message);
@@ -130,7 +132,8 @@ return (
       </div>
       <input type="file" onChange={handleFileChange} />
       <button className='buttonStyleB' onClick={handleAddFile}>Ajouter</button>
-      </div>
+      {showMsg ? <p>Fichier ajouté avec succès</p> : <p></p>}
+     </div>
         </Typography>
       </Box>
     </Modal>

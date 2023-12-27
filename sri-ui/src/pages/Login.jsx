@@ -20,17 +20,20 @@ const LoginPage = () => {
   const handleLogin = async () => {
 
     if (!email && !password) {
+      setShowMsg(true);
       setMsgErreur('Veuillez remplir Email et mot de passe');
       return;
     } else if (!email ) {
+      setShowMsg(true);
       setMsgErreur('Veuillez remplir Email');
       return;
     } else if (!password) {
+      setShowMsg(true);
       setMsgErreur('Veuillez remplir mot de passe');
       return;
     }
 
- try {
+ /*try {
       const response = await axios.post('http://localhost:3000/auth/login', {
         email,
         password,
@@ -39,18 +42,18 @@ const LoginPage = () => {
       if (response.status === 200) {
         const {role } = response.data;
          setRole(role);
-         if(role==="Teacher"){
-          navigate('/Home');
-        } else {
+         if(role==="Teacher"){ */
+          navigate('/search');
+   /*     } else {
           navigate('/Home'); 
-         }
+         
          
       } else {
         setMsgErreur("Email ou Mot de passe est incorrect");
       }
     } catch (error) {
       setMsgErreur("Email ou Mot de passe est incorrect");
-    }
+    }*/
   }
 
   return (
