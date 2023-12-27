@@ -49,9 +49,10 @@ public class DocumentServiceImp implements DocumentService{
 
     @Override
     public String uploadDoc(MultipartFile file) throws IOException {
-        String uploadDirectory = "C:/Users/EliteBook/Desktop/Sri/sri-project/sri-api/src/main/resources/docs";
+        String uploadDirectory = "C:/Users/saadf/Documents/sri/src/main/resources/docs";
         String filePath = Paths.get(uploadDirectory, file.getOriginalFilename()).toString();
         Files.write(Paths.get(filePath), file.getBytes());
+
         return filePath ;
 
     }

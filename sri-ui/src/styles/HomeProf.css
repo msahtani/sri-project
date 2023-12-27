@@ -32,6 +32,12 @@
   margin-left: 45%;
   font-size: 17px;
   font-weight: bold;
-  color: green;
+  width: 200px;
+  padding: 10px ;
+  border-radius: 20px;
+  color: white;
   margin-top: 20px;
+  background-color: green;
+  text-indent: 30px;
+  
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Navbar from '../Components/Navbar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -36,17 +36,22 @@ function HomeProf() {
       semestre: '',
       module: ''
   })
+  const [files , setFiles] = useState([]) ;
+  useEffect(() => {
+    async function getFiles() {
+      try {
+        const response = await axios.get("http://localhost:8083/documents");
+        console.log(response)
+        console.log(response.data);
+        setFiles(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getFiles();
+  }, []);
 
-
-
-  const files = [
-      { name: 'PDF.pdf', content: 'Contenu du PDF' },
-      { name: 'doc.pdf' ,content: 'Contenu du Word' },
-      { name: 'doc1.pdf',  content: 'Contenu du PowerPoint' },
-      { name: 'doc2.pdf',  content: 'Contenu du PowerPoint' },
-      { name: 'doc3.pdf',  content: 'Contenu du PowerPoint' },
-      { name: 'doc4.pdf',  content: 'Contenu du PowerPoint' },
-    ];
+  
 
 
     const handleFileChange = (event) => {
@@ -92,6 +97,16 @@ formData.append('pdfDocument', pdfDocument)
         if (response.status === 200) {
           console.log('Fichier ajouté avec succès');
           setShowMsg(true)
+          
+          setSelectedFile(null)
+
+          setPdfData({
+            level: '',
+      branch:'' ,
+      semestre: '',
+      module: ''
+
+          })
         }
       } catch (error) {
         console.error('Erreur lors de l\'ajout du fichier :', error.message);
@@ -140,7 +155,10 @@ return (
     <div className='style'>
       {files.map((file, index) => (
           <div className='elemStyle'>
-          {file.name}
+          <div className='row'>
+      <img src="/pdf_icon.png" alt="PDF Icon" height='20px' width='20px' className="pdfIcon" />
+      <div className='filename'>{file.name}</div>
+      </div>
           </div>
       ))}
     </div>

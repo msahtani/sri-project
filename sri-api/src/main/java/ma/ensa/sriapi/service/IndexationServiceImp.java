@@ -108,7 +108,7 @@ public class IndexationServiceImp implements IndexationService{
     }
 
     @Override
-    public Set<PDFDocument> searchDocsByElements(String level, String branch, String semestre, String module, String request) throws IOException {
+    public Set<PDFDocument> searchDocsByElements(String level, String branch, String semestre, String request) throws IOException {
         List<String> terms = process.processText(request);
         Map<PDFDocument, Integer> documentOccurrences = new HashMap<>();
 
@@ -123,7 +123,7 @@ public class IndexationServiceImp implements IndexationService{
                 PDFDocument pdf = documentServiceImp.getDocByName(documentName);
 
                 if (pdf.getLevel().equals(level) && pdf.getBranch().equals(branch)
-                        && pdf.getSemestre().equals(semestre) && pdf.getModule().equals(module)) {
+                        && pdf.getSemestre().equals(semestre) ) {
                     // Increment the occurrence count for the document
                     documentOccurrences.put(pdf, documentOccurrences.getOrDefault(pdf, 0) + 1);
                 }

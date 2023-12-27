@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import { RiSearchLine } from "react-icons/ri";
 import { MdCancel } from "react-icons/md";
+import { Link } from 'react-router-dom';
 import '../styles/Search.css';
 import { TiArrowSortedDown } from "react-icons/ti";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import Navbar2 from '../Components/Navbar2';
 
 function Search() {
   const [showN , setShowN] = useState(false);
@@ -97,9 +99,15 @@ function Search() {
     setResultF([]);
   };
 
+  const [selectedPdfPath, setSelectedPdfPath] = useState(null);
+
+  const showPdf = (pdfPath) => {
+    setSelectedPdfPath(pdfPath);
+  };
+
   return (
     <div >
-      <Navbar />
+      <Navbar2 />
       <div className='styleSearch'>
         <RiSearchLine className='iconSearch'/>
         <input type="text" className='inputSearch' value={text} onChange={(e) => setText(e.target.value)}/>
@@ -113,11 +121,11 @@ function Search() {
       </div>
       {showN && (
         <div className='st'>
-          <span  onClick={() => handleOptionSelect('1ère année', 'niveau')}>1ère année</span>
-          <span  onClick={() => handleOptionSelect('2ème année', 'niveau')}>2ème année</span>
-          <span  onClick={() => handleOptionSelect('3ème année', 'niveau')} >3ème année</span>
-          <span  onClick={() => handleOptionSelect('4ème année', 'niveau')}>4ème année</span>
-          <span  onClick={() => handleOptionSelect('5ème année', 'niveau')}>5ème année</span>
+          <span  onClick={() => handleOptionSelect('CP1', 'niveau')}>CP1</span>
+          <span  onClick={() => handleOptionSelect('CP2', 'niveau')}>CP2</span>
+          <span  onClick={() => handleOptionSelect('CI1', 'niveau')} >CI1</span>
+          <span  onClick={() => handleOptionSelect('CI2', 'niveau')}>CI2</span>
+          <span  onClick={() => handleOptionSelect('CI3', 'niveau')}>CI3</span>
         </div>
       )}
       </div>
@@ -145,14 +153,7 @@ function Search() {
         <div className='st'>
         <span  onClick={() => handleOptionSelect('S1', "sem")}>S1</span>
         <span  onClick={() => handleOptionSelect('S2', "sem")}>S2</span>
-        <span  onClick={() => handleOptionSelect('S3', "sem")} >S3</span>
-        <span  onClick={() => handleOptionSelect('S4', "sem")}>S4</span>
-        <span  onClick={() => handleOptionSelect('S5', "sem")}>S5</span>
-        <span  onClick={() => handleOptionSelect('S6', "sem")}>S6</span>
-        <span  onClick={() => handleOptionSelect('S7', "sem")}>S7</span>
-        <span  onClick={() => handleOptionSelect('S8', "sem")}>S8</span>
-        <span  onClick={() => handleOptionSelect('S9', "sem")}>S9</span>
-        <span  onClick={() => handleOptionSelect('S10', "sem")}>S10</span>
+        
       </div>
       )}
       </div>
@@ -163,12 +164,20 @@ function Search() {
       
       </div>
       <div className='style'>
-        {resultF.map((file, index) => (
-            <div className='elemStyle'>
-            {file.name}
-         </div>
-        ))}
+  {resultF.map((file, index) => (
+
+    <Link to={`/pdf/${file.path}`}>
+    <div className='elemStyle' key={index} >
+      <div className='row'>
+      <img src="/pdf_icon.png" alt="PDF Icon" height='20px' width='20px' className="pdfIcon" />
+      <div className='filename'>{file.name}</div>
       </div>
+      
+      
+    </div>
+    </Link>
+  ))}
+</div>
     </div>
     
   )

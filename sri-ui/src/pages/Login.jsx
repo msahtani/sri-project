@@ -43,7 +43,7 @@ const LoginPage = () => {
         const {role } = response.data;
          setRole(role);
          if(role==="Teacher"){ */
-          navigate('/search');
+          navigate('/home');
    /*     } else {
           navigate('/Home'); 
          
