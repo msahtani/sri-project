@@ -52,6 +52,7 @@ public class DocumentServiceImp implements DocumentService{
         String uploadDirectory = "C:/Users/saadf/Documents/sri/src/main/resources/docs";
         String filePath = Paths.get(uploadDirectory, file.getOriginalFilename()).toString();
         Files.write(Paths.get(filePath), file.getBytes());
+
         return filePath ;
 
     }

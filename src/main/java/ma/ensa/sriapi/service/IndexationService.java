@@ -22,6 +22,6 @@ public interface IndexationService {
 
    public List<Indexation> getAllIndex() ;
 
-   public Set<PDFDocument> searchDocsByElements(String level ,  String branch ,  String semestre ,  String module , String request) throws IOException;
+   public Set<PDFDocument> searchDocsByElements(String level ,  String branch ,  String semestre  , String request) throws IOException;
    public Set<PDFDocument> searchDocsByTerms(String request) throws IOException;
 }
